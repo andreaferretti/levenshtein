@@ -77,6 +77,13 @@ hashtables, and possibly reflection.
 How to run
 ----------
 
-* **clojure**: `lein run`
-* **nim**: `nim c -d:release -r levenshtein`
-* **nim-dynamic**: `nim c -d:release -r levenshtein`
+**Clojure**: `lein run`
+
+**Factor (dynamic)**:
+
+    USE: levenshtein-bench
+    "../words1000.txt" levenshtein-bench
+
+**Nim**: `nim c -d:release -r levenshtein`
+
+**Nim (dynamic)**: `nim c -d:release -r levenshtein`
