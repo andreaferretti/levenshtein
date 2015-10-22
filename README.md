@@ -73,3 +73,10 @@ array is faster than a hashmap.
 
 But the memoization style is more interesting, because it stresses closures,
 hashtables, and possibly reflection.
+
+How to run
+----------
+
+* **clojure**: `lein run`
+* **nim**: `nim c -d:release -r levenshtein`
+* **nim-dynamic**: `nim c -d:release -r levenshtein`

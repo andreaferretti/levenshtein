@@ -39,12 +39,8 @@ when isMainModule:
     numCouples = words.len * (words.len - 1) / 2
   var total = 0'i64
   let start = epochTime()
-  var x = 0
   for a, b in couples(words):
     total += levenshtein(a, b)
-    x += 1
-    if x mod 10000 == 0:
-      echo x
   let time = ((epochTime() - start) * 1000).int
   echo "The average Levenshtein distance is ", total.float / numCouples.float
   echo "The time to compute this was ", time, " ms"
