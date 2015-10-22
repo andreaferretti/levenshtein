@@ -79,7 +79,7 @@ How to run
 
 **Clojure**: `lein run`
 
-**Factor (dynamic)**:
+**Factor**:
 
     USE: levenshtein-bench
     "../words1000.txt" levenshtein-bench
