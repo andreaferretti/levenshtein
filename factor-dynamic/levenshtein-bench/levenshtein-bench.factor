@@ -11,7 +11,7 @@ IN: levenshtein-bench
   length dup 1 - * 2 / ;
 
 : avg-levenshtein-distance ( seq -- avg )
-  total-levenshtein-distance number-of-pairs bi / ; inline
+  [ total-levenshtein-distance >float ] [ number-of-pairs >float ] bi / ; inline
 
 : levenshtein-bench ( file -- avg )
   ascii file-lines [ avg-levenshtein-distance ] time ; inline
