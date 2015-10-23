@@ -24,8 +24,10 @@ macro memoized*(e: expr): stmt =
       if not cache.hasKey(n):
         cache[n] = funName(n)
       return cache[n]
-    proc reset() =
-      cache = initTable[nT,retType]()
+    type procType = proc(n : nT) : retType
+    template resetCache(p) =
+      when p == procName:
+        cache = initTable[nT,retType]()
 
   let
     retType = e.params()[0]

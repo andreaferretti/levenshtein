@@ -30,7 +30,7 @@ proc lev(t: tuple[a, b: string]): int {.memoized.} =
   return min(min(d1, d2), d3)
 
 proc levenshtein(a, b: string): int =
-  reset()
+  resetCache(lev)
   lev((a, b))
 
 when isMainModule:
