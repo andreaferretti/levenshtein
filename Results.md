@@ -6,4 +6,5 @@ Dynamic programming
 Memoization
 -----------
 
+* scala (2.11.7) 21873 ms
 * nim (0.11.3) 29658 ms
