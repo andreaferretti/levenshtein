@@ -2,6 +2,7 @@ Dynamic programming
 -------------------
 
 * nim (0.11.3) 206 ms
+* factor (0.97) 19512 ms
 
 Memoization
 -----------

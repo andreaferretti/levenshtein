@@ -27,7 +27,7 @@ word.
 
 The task amounts to compute all pairwise distances between distinct words in
 the file `words1000.txt` and report the average distance. The expected result
-is 8.570003708668546. The timing shall not include reading the file itself.
+is 8.56999127737733. The timing shall not include reading the file itself.
 
 Dynamic programming
 -------------------
@@ -82,6 +82,11 @@ How to run
 **Factor**:
 
     USE: levenshtein.benchmark
+    "../words1000.txt" levenshtein-benchmark
+
+**Factor (dynamic)**:
+
+    USE: levenshtein.benchmark.dynamic
     "../words1000.txt" levenshtein-benchmark
 
 **Nim**: `nim c -d:release -r levenshtein`
