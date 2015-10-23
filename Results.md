@@ -8,3 +8,4 @@ Memoization
 
 * scala (2.11.7) 21873 ms
 * nim (0.11.3) 29052 ms
+* factor (0.97) 59542 ms

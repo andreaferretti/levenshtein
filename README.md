@@ -81,8 +81,8 @@ How to run
 
 **Factor**:
 
-    USE: levenshtein-bench
-    "../words1000.txt" levenshtein-bench
+    USE: levenshtein.benchmark
+    "../words1000.txt" levenshtein-benchmark
 
 **Nim**: `nim c -d:release -r levenshtein`
 
