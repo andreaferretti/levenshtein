@@ -27,10 +27,8 @@ template head(h: ImmutableString): char = h.content[h.start]
 proc tail(h: ImmutableString): ImmutableString =
   result.content = h.content
   result.start = h.start + 1
-  result.hashValue = 0
-  for i in result.start .. high(result.content[]):
-    result.hashValue = result.hashValue !& ord(result.content[i])
-  result.hashValue = !$(result.hashValue)
+  result.hashValue = h.hashValue
+  result.hashValue = result.hashValue !& ord(h.head)
 
 template len(h: ImmutableString): int = len(h.content[]) - h.start
 
