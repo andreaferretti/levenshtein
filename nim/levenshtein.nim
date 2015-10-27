@@ -1,4 +1,4 @@
-import streams, times, memo
+import streams, times, memo, hashes
 
 proc readWords(path: string): seq[string] =
   result = @[]
@@ -15,20 +15,38 @@ iterator couples[A](xs: seq[A]): auto =
     for j in (i + 1) .. < xs.len:
       yield (xs[i], xs[j])
 
-template tail(s: string): string = s[1 .. s.high]
+type ImmutableString = object
+  content: ref string
+  start: int
+  hashValue: int
 
-template head(s: string): char = s[0]
+template hash(h: ImmutableString): int = h.hashValue
 
-proc lev(t: tuple[a, b: string]): int {.memoized.} =
+template head(h: ImmutableString): char = h.content[h.start]
+
+proc tail(h: ImmutableString): ImmutableString =
+  result.content = h.content
+  result.start = h.start + 1
+  result.hashValue = 0
+  for i in result.start .. high(result.content[]):
+    result.hashValue = result.hashValue !& ord(result.content[i])
+  result.hashValue = !$(result.hashValue)
+
+template len(h: ImmutableString): int = len(h.content[]) - h.start
+
+proc lift(s: string): ImmutableString =
+  new result.content
+  result.content[] = s
+  result.start = 0
+  result.hashValue = hash(s)
+
+proc lev(t: tuple[a, b: ImmutableString]): int {.memoized.} =
   let (a, b) = t
   if a.len == 0: return b.len
   if b.len == 0: return a.len
-  var
+  let
     a1 = a.tail
     b1 = b.tail
-  shallow(a1)
-  shallow(b1)
-  let
     d1 = lev((a1, b)) + 1
     d2 = lev((a, b1)) + 1
     d3 = lev((a1, b1)) + (if a.head == b.head: 0 else: 1)
@@ -36,7 +54,7 @@ proc lev(t: tuple[a, b: string]): int {.memoized.} =
 
 proc levenshtein(a, b: string): int =
   resetCache(lev)
-  lev((a, b))
+  lev((a.lift, b.lift))
 
 when isMainModule:
   let
