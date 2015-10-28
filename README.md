@@ -89,6 +89,6 @@ How to run
     USE: levenshtein.benchmark.dynamic
     "../words1000.txt" levenshtein-benchmark
 
-**Nim**: `nim c -d:release -r levenshtein`
+**Nim**: `nimble c -d:release -r levenshtein`
 
 **Nim (dynamic)**: `nim c -d:release -r levenshtein`
